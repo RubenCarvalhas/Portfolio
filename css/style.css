@@ -1,0 +1,301 @@
+body,
+html {
+    font-family: 'Montserrat';
+    color:white;
+}
+
+.introductionDiv {
+  margin: 35vh 0 0 20%; 
+}
+
+.secondSectionDiv{
+    margin: 40vh;
+    opacity: 1;
+}
+
+.secondTitle{
+  transform: translateY(50px);
+  text-align: center;
+  opacity: 0;
+  transition: transform 2s cubic-bezier(0.25, 1, 0.5, 1), opacity 2s ease;
+  font-size: 100px;
+}
+
+.secondTitle--visible{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.title{
+    font-size: 80px;
+    margin-bottom: 0px;
+}
+
+.description{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.secondSectionInfo{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap:20px;
+}
+
+.secondSectionInfo h3{
+    flex: 1;
+}
+
+.divider{
+    width: 5px;
+    height: auto;
+    display: inline-block;
+}
+
+.dividingLine {
+  width: 3px;
+  background: #bbb;
+  align-self: stretch;
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: growLine 1s forwards;
+  animation-delay: 0.5s;
+}
+
+.secondSectionLeftDescription{
+  transform: translateX(-50px);
+  opacity: 0;
+  animation: slideIn 4s forwards;
+  text-align: left;
+}
+
+.secondSectionRightDescription{
+  transform: translateX(50px);
+  opacity: 0;
+  animation: slideIn 4s forwards;
+}
+
+@keyframes growLine {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.buttonLanguage{
+    font-family: 'Montserrat';
+    background-color: transparent;
+    color:white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid white;
+    font-size: 15px;
+    transition: all 0.3s ease;   
+}
+
+.buttonLanguage:hover{
+    background-color: white;
+    color: black;
+    transform: scale(1.5) perspective(1px);
+    /*transform-origin: left center;*/
+}
+
+.resumeButton {
+  font-family: 'Montserrat';
+  position: relative;
+  top: 25px;
+  padding: 15px 30px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border: 1px solid white;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.resumeButton:hover{
+    background-color: white;
+    color: black;
+    transform: scale(1.5) perspective(1px);
+    transform-origin: left center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.burger div{
+ width: 25px;
+ height: 3px;
+ background-color: white;
+ margin: 5px;
+ 
+}
+
+.box-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  position: relative;
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 500px;
+  padding: 10px;
+  background: black;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  margin-bottom: 40px;
+}
+
+/* seta em baixo (todas as caixas) */
+.box::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: black;
+  position: absolute;
+  bottom: -11px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  z-index: 2;
+}
+
+/* encaixe no topo (todas exceto a primeira) */
+.box.recorte::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: black;     
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-135deg);
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+  z-index: 3;
+}
+
+/* caixa com recorte em cima mas sem seta em baixo */
+.box--openTop::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: black;     
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-135deg);
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+  z-index: 3;
+}
+
+/* remove seta em baixo */
+.box--openTop::after {
+  content: none;
+}
+
+
+.capabilitiesDiv{
+  margin: 0 0 0 20%;
+}
+
+.capabilitiesTitle{
+  font-size: 80px;
+/*  border-bottom: solid 1px white;
+  margin-bottom: 80px;*/
+}
+
+.subtitle{
+  font-size: 40px;
+  /*border-bottom: solid 1px white;*/
+}
+
+.icons {
+  display: flex;
+  gap: 40px;
+  justify-content: flex-start; 
+  align-items: center;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+}
+
+.aline,
+.secondLine {
+  position: relative;
+  border: none;
+  border-top: 2px solid white;
+  transform: scaleX(0);
+  transform-origin: left;
+  margin-left: 0;
+}
+
+/* animação ativada */
+.aline.visible {
+  width: 45%;
+  top: -60px;
+  animation: growLineLeft 1s forwards;
+  animation-delay: 0.5s;
+}
+
+.secondLine.visible {
+  width: 18%;
+  top: -30px;
+  animation: growLineLeft 1s forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes growLineLeft {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+
+
+
+
+#particles-js canvas {
+    display: block;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+    transition: opacity .8s ease, transform 1.4s ease;
+    background-color: black;
+}
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -10;
+    top: 0;
+    left: 0
+}
