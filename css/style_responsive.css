@@ -26,8 +26,14 @@
     font-size: 31px;
   }
 
-  .aline{
-    top: -20px;
+  .aline {
+    position: static;
+    margin: 5px 0 0 0;
+  }
+
+  .secondLine {
+    position: static;
+    margin: 0 0 15px 0; 
   }
 
   .subtitle{
@@ -86,15 +92,22 @@
     font-size: 40px;
     margin: 20vh 0 0 0;
   }
+  
+.aline {
+  position: static;
+  margin: 5px 0 0 0; 
+}
 
-  .aline {
-    top: -10px;
-  }
+.secondLine {
+  position: static;
+  margin: 0 0 -2px 0;
+}
 
   .subtitle {
     font-size: 30px;
     margin-top: 50px;
     width: auto; 
+    margin-bottom: 10px;
   }
 
   .icons {
@@ -136,16 +149,16 @@ html{
   }
 
   .secondSectionLeftDescription {
-    transform: translateX(-20px); /* menos deslocamento */
+    transform: translateX(-20px);
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
     box-sizing: border-box;
-    padding: 0 10px; /* evita que o texto cole às bordas */
+    padding: 0 10px; 
   }
 
   .secondSectionLeftDescription h3 {
-    font-size: 18px; /* reduz fonte se estiver a rebentar */
+    font-size: 18px;
     line-height: 1.4;
   }
 

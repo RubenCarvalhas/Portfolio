@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         obs.unobserve(entry.target); // deixa de observar depois da animação
       }
     });
-  }, { threshold: 0.9 }); // 10% visível já conta
+  }, { threshold: 0.9 }); // 10% visível 
 
   titles.forEach(title => observer.observe(title));
 });
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         obs.unobserve(entry.target); // só anima 1 vez
       }
     });
-  }, { threshold: 0.5 }); // 50% visível já dispara
+  }, { threshold: 0.5 }); // 50% visível 
 
   lines.forEach(line => observerLines.observe(line));
 });
