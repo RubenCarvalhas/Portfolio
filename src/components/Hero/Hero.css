@@ -1,0 +1,226 @@
+:root {
+  --bg: #000000;
+  --text: #ffffff;
+  --text-secondary: #9a9a9a;
+  --text-tertiary: #666666;
+  --accent: #7fc8ff;
+  --accent-text: #04263f;
+  --border: #222222;
+  --card-bg: #0d0d0d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #000;
+  color: var(--text);
+  scroll-snap-type: y proximity;
+  min-height: 100vh;
+}
+
+@media (min-width: 701px) {
+  body {
+    scroll-snap-type: y mandatory;
+  }
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------- Hero ---------------- */
+
+.hero,
+.hero * {
+  cursor: none;
+}
+
+
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: transparent;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.starfield-unused {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero__greeting {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 8px;
+  letter-spacing: 1px;
+}
+
+.hero__name {
+  font-size: 40px;
+  font-weight: 500;
+  margin: 0 0 12px;
+  color: var(--text);
+}
+
+.typewriter {
+  font-size: 20px;
+  font-weight: 500;
+  height: 28px;
+  color: var(--accent);
+}
+
+.typewriter__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 2px;
+  background: var(--accent);
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero__actions {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 16px;
+}
+
+.btn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border: 0.5px solid transparent;
+  transition: transform 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--ghost {
+  border-color: #444;
+  background: transparent;
+  color: var(--text);
+}
+
+.btn--solid {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+/* ---------------- Skills section ---------------- */
+
+.hero__skills {
+  position: relative;
+  z-index: 10;
+  padding: 0 2rem 2.5rem;
+  flex-shrink: 0;
+}
+
+.hero__scrollHint {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  text-align: center;
+  margin: 0 0 1rem;
+}
+
+.hero__divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.hero__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.card__icon {
+  display: flex;
+  align-items: center;
+  color: var(--accent);
+}
+
+.card__title {
+  font-size: 15px;
+  margin: 10px 0 4px;
+  color: var(--text);
+}
+
+.card__desc {
+  font-size: 13px;
+  color: #999;
+  margin: 0;
+}
+
+/* ---------------- Custom cursor ---------------- */
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.18s, height 0.18s, background 0.18s, opacity 0.18s,
+    border-color 0.18s;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.custom-cursor--hover {
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-color: transparent;
+}

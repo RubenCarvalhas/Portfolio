@@ -1,0 +1,133 @@
+/* ---------------- Skills ---------------- */
+
+.skills,
+.skills * {
+  cursor: none;
+}
+
+.skills {
+  position: relative;
+  background: transparent;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 0 6rem;
+  scroll-snap-align: start;
+}
+
+.skills__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.skills__label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.skills__heading {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.skills__hint {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin: 0 0 2.5rem;
+}
+
+.bubblefield {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  height: 480px;
+  border-radius: 16px;
+  border: 0.5px solid var(--border);
+  background: rgba(255, 255, 255, 0.015);
+  overflow: hidden;
+  cursor: none;
+}
+
+.bubble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid;
+  will-change: transform;
+  pointer-events: none;
+  transition: border-color 0.15s, background 0.15s;
+  overflow: visible;
+}
+
+.bubble--dragging {
+  pointer-events: none;
+}
+
+.bubble__name {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(20, 20, 24, 0.92);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 5;
+  animation: bubblePop 0.18s ease-out;
+}
+
+@keyframes bubblePop {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.8) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) translateY(0);
+  }
+}
+
+.bubble__name::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid rgba(20, 20, 24, 0.92);
+}
+
+@media (max-width: 700px) {
+  .bubblefield {
+    height: 340px;
+  }
+}
