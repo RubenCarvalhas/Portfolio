@@ -53,10 +53,10 @@ export default function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Tools I specialize in.
+          Tools I reach for.
         </motion.h2>
 
-        <p className="skills__hint">Hold a bubble for its description</p>
+        <p className="skills__hint">drag a bubble, or just watch them bounce</p>
 
         <BubbleField />
       </div>
@@ -204,12 +204,14 @@ function BubbleField() {
     }
 
     function onMove(e) {
+      if (e.touches) e.preventDefault();
       const pos = getPos(e);
       mouseRef.current.x = pos.x;
       mouseRef.current.y = pos.y;
     }
 
     function onDown(e) {
+      if (e.touches) e.preventDefault();
       const pos = getPos(e);
       const bubbles = bubblesRef.current;
       for (let i = bubbles.length - 1; i >= 0; i--) {
@@ -255,8 +257,8 @@ function BubbleField() {
     container.addEventListener("mousedown", onDown);
     container.addEventListener("mouseup", onUp);
     container.addEventListener("mouseleave", onLeave);
-    container.addEventListener("touchmove", onMove, { passive: true });
-    container.addEventListener("touchstart", onDown, { passive: true });
+    container.addEventListener("touchmove", onMove, { passive: false });
+    container.addEventListener("touchstart", onDown, { passive: false });
     container.addEventListener("touchend", onUp);
 
     function onResize() {
