@@ -53,10 +53,10 @@ export default function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Tools I reach for.
+          Tools im most familiar with
         </motion.h2>
 
-        <p className="skills__hint">drag a bubble, or just watch them bounce</p>
+        <p className="skills__hint">Hold a bubble for details</p>
 
         <BubbleField />
       </div>
