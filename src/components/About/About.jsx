@@ -15,7 +15,7 @@ const TIMELINE = [
     year: "INT",
     title: "Android app",
     sub: "School internship",
-    detail: "Developed an Android app for a company to serve as a virtual portfolio — first real-world project.",
+    detail: "Developed an Android app for a company to serve as a virtual portfolio, first real-world project.",
   },
   {
     id: 3,
@@ -82,13 +82,13 @@ export default function About() {
           >
             <p className="about__bio">
               I'm someone who loves to{" "}
-              <span className="about__highlight">create from imagination</span> —
+              <span className="about__highlight">create from imagination</span>,
               from websites to video games and everything in between. I use tools
               like Figma and Blender to bring whatever comes to mind to life.
             </p>
             <p className="about__bio">
               In my free time I enjoy playing video games, reading, and watching
-              shows — as well as coming up with new side projects to keep pushing
+              shows, as well as coming up with new side projects to keep pushing
               my skills forward.
             </p>
 

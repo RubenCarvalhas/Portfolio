@@ -8,6 +8,12 @@ import "./components/About/About.css";
 import Skills from "./components/Skills/Skills";
 import "./components/Skills/Skills.css";
 
+import ProjectsInfiniteRow from "./components/ProjectsInfiniteRow/ProjectsInfiniteRow";
+import "./components/ProjectsInfiniteRow/ProjectsInfiniteRow.css";
+import "./components/ProjectCard/ProjectCard.css";
+
+import projects from "../data/Projects";
+
 function GlobalStarfield() {
   const canvasRef = useRef(null);
 
@@ -38,7 +44,6 @@ function GlobalStarfield() {
       ctx.fillStyle = "#000";
       ctx.fillRect(0, 0, w, h);
 
-      // nebula glows — hero zone
       const g1 = ctx.createRadialGradient(w * 0.7, h * 0.12, 0, w * 0.7, h * 0.12, w * 0.5);
       g1.addColorStop(0, "rgba(80,60,160,0.18)");
       g1.addColorStop(1, "rgba(0,0,0,0)");
@@ -51,7 +56,6 @@ function GlobalStarfield() {
       ctx.fillStyle = g2;
       ctx.fillRect(0, 0, w, h);
 
-      // nebula glows — about zone
       const g3 = ctx.createRadialGradient(w * 0.15, h * 0.65, 0, w * 0.15, h * 0.65, w * 0.45);
       g3.addColorStop(0, "rgba(60,40,140,0.14)");
       g3.addColorStop(1, "rgba(0,0,0,0)");
@@ -122,7 +126,6 @@ function CustomCursor() {
       cursor.style.opacity = "0";
     }
 
-    // event delegation: works even for elements added/removed dynamically
     function onOver(e) {
       if (e.target.closest(".hover-target")) {
         cursor.classList.add("custom-cursor--hover");
@@ -160,6 +163,7 @@ export default function App() {
         <Hero />
         <About />
         <Skills />
+        <ProjectsInfiniteRow projects={projects} speed={35} />
       </div>
     </div>
   );

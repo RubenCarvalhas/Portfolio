@@ -1,0 +1,92 @@
+.projects-section,
+.projects-section * {
+  cursor: none;
+}
+
+.projects-section {
+  position: relative;
+  background: transparent;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 0 6rem;
+  scroll-snap-align: start;
+}
+
+.projects-section__label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.projects-section__heading {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 3rem;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.infinite-row {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.infinite-row__track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: infiniteScroll linear infinite;
+}
+
+.infinite-row:hover .infinite-row__track {
+  animation-play-state: paused;
+}
+
+.infinite-row__item {
+  flex-shrink: 0;
+}
+
+@keyframes infiniteScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.infinite-row__fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.infinite-row__fade--left {
+  left: 0;
+  background: linear-gradient(to right, #000, transparent);
+}
+
+.infinite-row__fade--right {
+  right: 0;
+  background: linear-gradient(to left, #000, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .infinite-row__track {
+    animation: none;
+  }
+}
