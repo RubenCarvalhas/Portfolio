@@ -3,11 +3,11 @@ import { Mail } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 
-// TODO: substitui pelos teus contactos reais.
-const EMAIL = "hello@rubencarvalhas.dev";
+
+const EMAIL = "carvalhasruben@gmail.com";
 const LINKS = [
   { label: "GitHub", href: "https://github.com/rubencarvalhas", Icon: SiGithub },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/rubencarvalhas/", Icon: FaLinkedin },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/r%C3%BAben-carvalhas-9875a2290/", Icon: FaLinkedin },
 ];
 
 export default function Contact() {
@@ -41,7 +41,7 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.18 }}
         >
-          Open to freelance work and new opportunities — reach out anytime.
+          Open to freelance work and new opportunities. Reach out anytime!
         </motion.p>
 
         <motion.a

@@ -7,7 +7,7 @@ const TIMELINE = [
     id: 1,
     year: "16",
     title: "Where it all started",
-    sub: "Vocational course — João de Barros",
+    sub: "Vocational course, João de Barros",
     detail: "First contact with programming. Fell in love with the idea of building things from scratch.",
   },
   {

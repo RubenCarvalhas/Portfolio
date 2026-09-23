@@ -30,35 +30,30 @@ const projects = [
     planet: "mars",
     link: "https://guibela.site/",
   },
-
+ /*
   {
     title: "Appointly",
     description: "Multi-tenant SaaS booking platform for small service businesses",
     image: null, // TODO: screenshot em /Portfolio/appointly.png
     planet: "mercury",
     link: null, // TODO: link público, se/quando existir
-  },
-  {
-    title: "Imprintify",
-    description: "Real estate platform for Santos Rodrigues Imobiliária",
-    image: null, // TODO: screenshot em /Portfolio/imprintify.png
-    planet: "venus",
-    link: null, // TODO: link do site
-  },
+  },*/
   {
     title: "Óptica Manarte",
     description: "Full site for an optical shop with two Almada-area locations",
-    image: null, // TODO: screenshot em /Portfolio/optica-manarte.png
+    image: "/Portfolio/manarte.png",
     planet: "uranus",
-    link: null, // TODO: link do site
+    link:"https://www.opticamanarte.com/", 
   },
+
+  /*
   {
     title: "Yes House",
     description: "Real estate frontend build",
     image: null, // TODO: screenshot em /Portfolio/yes-house.png
     planet: "jupiter",
     link: null, // TODO: link do site
-  },
+  }, */
 ];
 
 export default projects;
