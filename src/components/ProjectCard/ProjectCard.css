@@ -1,36 +1,37 @@
 .pcard {
   position: relative;
   display: block;
-  width: 220px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 0.5px solid var(--border);
-  border-radius: 12px;
+  width: 280px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
   overflow: visible;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
   color: inherit;
 }
 
 .pcard:hover {
-  border-color: rgba(127, 200, 255, 0.4);
-  transform: translateY(-2px);
+  border-color: var(--accent-border);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -18px rgba(110, 231, 255, 0.35);
 }
 
 .pcard__planet {
   position: absolute;
-  top: -20px;
-  right: -16px;
-  width: 56px;
-  height: 56px;
+  top: -22px;
+  right: -18px;
+  width: 60px;
+  height: 60px;
   z-index: 3;
   pointer-events: none;
 }
 
 .pcard__image-wrap {
   width: 100%;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  border-radius: 12px 12px 0 0;
+  border-radius: 14px 14px 0 0;
   background: rgba(255, 255, 255, 0.02);
 }
 
@@ -39,22 +40,28 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.pcard:hover .pcard__image {
+  transform: scale(1.04);
 }
 
 .pcard__image--placeholder {
   background: linear-gradient(
     135deg,
-    rgba(127, 200, 255, 0.08),
-    rgba(60, 40, 140, 0.12)
+    rgba(110, 231, 255, 0.1),
+    rgba(60, 40, 140, 0.14)
   );
 }
 
 .pcard__body {
-  padding: 0.9rem 1.1rem 1.1rem;
+  padding: 1rem 1.25rem 1.25rem;
 }
 
 .pcard__title {
-  font-size: 14px;
+  font-family: var(--font-display);
+  font-size: 16px;
   font-weight: 600;
   color: var(--text);
   margin: 0 0 10px;
@@ -68,7 +75,7 @@
 }
 
 .pcard__desc {
-  font-size: 12.5px;
+  font-size: 13px;
   line-height: 1.6;
   color: var(--text-secondary);
   margin: 0;

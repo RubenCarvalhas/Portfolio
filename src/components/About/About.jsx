@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Download, Gamepad2, BookOpen, Tv, Code2 } from "lucide-react";
 
@@ -184,67 +184,4 @@ function TimelineCard({ item, index }) {
       </button>
     </motion.div>
   );
-}
-
-function NebulaBackground() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    let stars = [];
-    let raf;
-
-    function resize() {
-      const section = canvas.parentElement;
-      canvas.width = section.offsetWidth;
-      canvas.height = section.offsetHeight;
-      stars = Array.from({ length: 60 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.2 + 0.2,
-        vx: (Math.random() - 0.5) * 0.1,
-        vy: (Math.random() - 0.5) * 0.1,
-        tw: Math.random() * Math.PI * 2,
-        speed: Math.random() * 0.015 + 0.008,
-      }));
-    }
-
-    function draw() {
-      const w = canvas.width, h = canvas.height;
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, w, h);
-
-      const g1 = ctx.createRadialGradient(w * 0.15, h * 0.3, 0, w * 0.15, h * 0.3, w * 0.5);
-      g1.addColorStop(0, "rgba(60,40,140,0.14)");
-      g1.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = g1;
-      ctx.fillRect(0, 0, w, h);
-
-      const g2 = ctx.createRadialGradient(w * 0.85, h * 0.7, 0, w * 0.85, h * 0.7, w * 0.45);
-      g2.addColorStop(0, "rgba(30,80,150,0.12)");
-      g2.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = g2;
-      ctx.fillRect(0, 0, w, h);
-
-      for (const s of stars) {
-        s.x += s.vx; s.y += s.vy; s.tw += s.speed;
-        if (s.x < 0) s.x = w; if (s.x > w) s.x = 0;
-        if (s.y < 0) s.y = h; if (s.y > h) s.y = 0;
-        const alpha = Math.max(0, 0.3 + Math.sin(s.tw) * 0.3);
-        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      raf = requestAnimationFrame(draw);
-    }
-
-    resize();
-    draw();
-    window.addEventListener("resize", resize);
-    return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(raf); };
-  }, []);
-
-  return <canvas ref={canvasRef} className="about__canvas" />;
 }

@@ -1,12 +1,3 @@
-// Lista de projetos mostrados na secção de scroll infinito.
-// Para adicionar um novo projeto, copia um dos objetos abaixo e edita os campos.
-//
-// Campos:
-// - title: nome do projeto
-// - description: frase curta
-// - image: caminho da imagem (deve começar com /Portfolio/ devido ao base path do GitHub Pages)
-// - planet: mercury | venus | earth | mars | jupiter | saturn | uranus | neptune
-// - link (opcional): URL do site; se presente, o card fica clicável e abre numa nova aba
 
 const projects = [
   {
@@ -16,7 +7,7 @@ const projects = [
     planet: "saturn",
     link: "https://www.ortopediaortosaude.com/",
   },
-  
+
   {
     title: "Conceito do corpo",
     description: "A landing page for a spa company",
@@ -38,6 +29,35 @@ const projects = [
     image: "/Portfolio/guibela.png",
     planet: "mars",
     link: "https://guibela.site/",
+  },
+
+  {
+    title: "Appointly",
+    description: "Multi-tenant SaaS booking platform for small service businesses",
+    image: null, // TODO: screenshot em /Portfolio/appointly.png
+    planet: "mercury",
+    link: null, // TODO: link público, se/quando existir
+  },
+  {
+    title: "Imprintify",
+    description: "Real estate platform for Santos Rodrigues Imobiliária",
+    image: null, // TODO: screenshot em /Portfolio/imprintify.png
+    planet: "venus",
+    link: null, // TODO: link do site
+  },
+  {
+    title: "Óptica Manarte",
+    description: "Full site for an optical shop with two Almada-area locations",
+    image: null, // TODO: screenshot em /Portfolio/optica-manarte.png
+    planet: "uranus",
+    link: null, // TODO: link do site
+  },
+  {
+    title: "Yes House",
+    description: "Real estate frontend build",
+    image: null, // TODO: screenshot em /Portfolio/yes-house.png
+    planet: "jupiter",
+    link: null, // TODO: link do site
   },
 ];
 

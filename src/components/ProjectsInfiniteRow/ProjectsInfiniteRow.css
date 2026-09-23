@@ -44,7 +44,7 @@
 
 .infinite-row__track {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   width: max-content;
   animation: infiniteScroll linear infinite;
 }
@@ -77,12 +77,12 @@
 
 .infinite-row__fade--left {
   left: 0;
-  background: linear-gradient(to right, #000, transparent);
+  background: linear-gradient(to right, var(--bg), transparent);
 }
 
 .infinite-row__fade--right {
   right: 0;
-  background: linear-gradient(to left, #000, transparent);
+  background: linear-gradient(to left, var(--bg), transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

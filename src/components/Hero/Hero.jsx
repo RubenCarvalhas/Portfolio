@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { Code, Smartphone, Database } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const WORDS = [
   "Frontend Developer",
@@ -56,8 +54,12 @@ function Typewriter({ words }) {
           setText(current.slice(0, text.length - 1));
         }, 40);
       } else {
-        setDeleting(false);
-        setWordIndex((wordIndex + 1) % words.length);
+        // Deferred (rather than called synchronously in the effect body) so
+        // this doesn't trigger a same-flush cascading render.
+        timeout = setTimeout(() => {
+          setDeleting(false);
+          setWordIndex((i) => (i + 1) % words.length);
+        }, 0);
       }
     }
 
@@ -69,25 +71,5 @@ function Typewriter({ words }) {
       <span>{text}</span>
       <span className="typewriter__cursor" />
     </div>
-  );
-}
-
-/* ---------------- Reveal card (scroll animation) ---------------- */
-
-function RevealCard({ icon: Icon, title, desc, delay }) {
-  return (
-    <motion.div
-      className="card hover-target"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
-    >
-      <div className="card__icon">
-        <Icon size={22} />
-      </div>
-      <h3 className="card__title">{title}</h3>
-      <p className="card__desc">{desc}</p>
-    </motion.div>
   );
 }

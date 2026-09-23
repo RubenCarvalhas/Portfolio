@@ -12,6 +12,9 @@ import ProjectsInfiniteRow from "./components/ProjectsInfiniteRow/ProjectsInfini
 import "./components/ProjectsInfiniteRow/ProjectsInfiniteRow.css";
 import "./components/ProjectCard/ProjectCard.css";
 
+import Contact from "./components/Contact/Contact";
+import "./components/Contact/Contact.css";
+
 import projects from "../data/Projects";
 
 function GlobalStarfield() {
@@ -164,6 +167,7 @@ export default function App() {
         <About />
         <Skills />
         <ProjectsInfiniteRow projects={projects} speed={35} />
+        <Contact />
       </div>
     </div>
   );

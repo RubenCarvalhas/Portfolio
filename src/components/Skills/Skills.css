@@ -50,42 +50,177 @@
 .skills__hint {
   font-size: 13px;
   color: var(--text-tertiary);
-  margin: 0 0 2.5rem;
+  margin: 0 0 3rem;
 }
 
-.bubblefield {
+/* ---------------- Orbit field ---------------- */
+
+.orbit {
   position: relative;
-  width: 100%;
-  max-width: 880px;
-  height: 480px;
-  border-radius: 16px;
-  border: 0.5px solid var(--border);
-  background: rgba(255, 255, 255, 0.015);
-  overflow: hidden;
-  cursor: none;
-  touch-action: none;
+  width: 500px;
+  height: 500px;
+  max-width: 100%;
+  aspect-ratio: 1;
 }
 
-.bubble {
+@media (max-width: 640px) {
+  .orbit {
+    transform: scale(0.62);
+    margin: -95px 0;
+  }
+}
+
+.orbit__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  z-index: 2;
+  /* Purely decorative — its glow's bounding box reaches as far out as the
+     innermost ring and was stealing hover from those icons. */
+  pointer-events: none;
+}
+
+.orbit__core-dot {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    #fff 0%,
+    var(--accent) 45%,
+    var(--accent-2) 100%
+  );
+  box-shadow: 0 0 44px 8px var(--accent-soft);
+}
+
+.orbit__core-glow {
+  position: absolute;
+  inset: -46px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+  animation: orbit-pulse 4s ease-in-out infinite;
+}
+
+@keyframes orbit-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.orbit__ring-guide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--r) * 2);
+  height: calc(var(--r) * 2);
+  transform: translate(-50%, -50%);
+  border: 1px dashed var(--border);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbit__ring {
+  position: absolute;
+  inset: 0;
+  /* This box spans the whole field (inset: 0), not just its own ring —
+     without this, a later (outer) ring sits on top in the DOM/stacking
+     order and swallows hover/click for every inner-ring icon beneath it.
+     Only the icon buttons themselves should be interactive. */
+  pointer-events: none;
+  animation: orbit-rotate var(--dur) linear infinite;
+}
+
+.orbit__ring--reverse {
+  animation-name: orbit-rotate-reverse;
+}
+
+.orbit:hover .orbit__ring {
+  animation-play-state: paused;
+}
+
+.orbit:hover .orbit__spin {
+  animation-play-state: paused;
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-rotate-reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.orbit__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: rotate(var(--angle)) translateX(var(--r));
+}
+
+.orbit__counter {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.orbit__spin {
+  animation: orbit-rotate-reverse var(--dur) linear infinite;
+}
+
+.orbit__spin--reverse {
+  animation-name: orbit-rotate;
+}
+
+.orbit__icon {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: var(--size);
+  height: var(--size);
+  margin: calc(var(--size) / -2) 0 0 calc(var(--size) / -2);
   border-radius: 50%;
   border: 1px solid;
-  will-change: transform;
-  pointer-events: none;
-  transition: border-color 0.15s, background 0.15s;
-  overflow: visible;
+  padding: 0;
+  cursor: none;
+  pointer-events: auto;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
 }
 
-.bubble--dragging {
-  pointer-events: none;
+.orbit__icon:hover,
+.orbit__icon--active {
+  transform: scale(1.25);
+  z-index: 5;
 }
 
-.bubble__name {
+.orbit__icon svg {
+  width: 52%;
+  height: 52%;
+}
+
+.orbit__tooltip {
   position: absolute;
   bottom: calc(100% + 10px);
   left: 50%;
@@ -93,42 +228,21 @@
   white-space: nowrap;
   font-size: 12px;
   font-weight: 500;
-  color: var(--text);
-  background: rgba(20, 20, 24, 0.92);
+  background: rgba(10, 10, 16, 0.92);
   border: 0.5px solid rgba(255, 255, 255, 0.15);
   padding: 6px 12px;
   border-radius: 8px;
   pointer-events: none;
-  z-index: 5;
-  animation: bubblePop 0.18s ease-out;
+  animation: orbit-pop 0.16s ease-out;
 }
 
-@keyframes bubblePop {
+@keyframes orbit-pop {
   from {
     opacity: 0;
-    transform: translateX(-50%) scale(0.8) translateY(4px);
+    transform: translateX(-50%) scale(0.85) translateY(4px);
   }
   to {
     opacity: 1;
     transform: translateX(-50%) scale(1) translateY(0);
-  }
-}
-
-.bubble__name::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 7px solid rgba(20, 20, 24, 0.92);
-}
-
-@media (max-width: 700px) {
-  .bubblefield {
-    height: 340px;
   }
 }

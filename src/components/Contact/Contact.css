@@ -1,0 +1,109 @@
+.contact,
+.contact * {
+  cursor: none;
+}
+
+.contact {
+  position: relative;
+  background: transparent;
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 0 3rem;
+  scroll-snap-align: start;
+}
+
+.contact__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contact__label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.contact__heading {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.contact__sub {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin: 0 0 2rem;
+  line-height: 1.6;
+}
+
+.contact__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 0 0 1px var(--accent-border), 0 8px 24px -8px var(--accent-border);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.contact__email:hover {
+  box-shadow: 0 0 0 1px var(--accent-border), 0 10px 30px -6px rgba(110, 231, 255, 0.55);
+}
+
+.contact__email:active {
+  transform: scale(0.97);
+}
+
+.contact__links {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.75rem;
+}
+
+.contact__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.contact__link:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.contact__footer {
+  margin-top: 4rem;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
